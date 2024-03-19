@@ -26,7 +26,7 @@ var (
 type Unifi struct {
 	client  *http.Client
 	baseURL string
-	apiURL  string
+	ApiURL  string
 	version int
 }
 
@@ -72,7 +72,7 @@ func Login(user, pass, host, port, site string, version int) (*Unifi, error) {
 		return nil, err
 	}
 
-	u.apiURL = u.baseURL + "api/"
+	u.ApiURL = u.baseURL + "api/"
 
 	return u, nil
 }
@@ -84,7 +84,7 @@ func (u *Unifi) Logout() {
 
 func (u *Unifi) apicmd(site *Site, cmd string, payload any) ([]byte, error) {
 
-	url := u.apiURL
+	url := u.ApiURL
 
 	// For site specific command, add site settings
 	if site != nil {
@@ -124,7 +124,7 @@ func (u *Unifi) apicmd(site *Site, cmd string, payload any) ([]byte, error) {
 
 func (u *Unifi) apicmdPut(site *Site, cmd string, data any) error {
 
-	url := u.apiURL
+	url := u.ApiURL
 
 	// For site specific command, add site settings
 	if site != nil {
@@ -191,7 +191,7 @@ func (u *Unifi) maccmd(mgr string, args any) error {
 		return err
 	}
 	val := url.Values{"json": {string(param)}}
-	_, err = u.client.PostForm(u.apiURL+"cmd/"+mgr, val)
+	_, err = u.client.PostForm(u.ApiURL+"cmd/"+mgr, val)
 	return err
 }
 
