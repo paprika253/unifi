@@ -85,7 +85,7 @@ func (u *Unifi) apicmdNewVoucher(site *Site, cmd string) ([]byte, error) {
 	jsonData := Nv
 
 	// Setup url
-	cmdurl := u.apiURL
+	cmdurl := u.ApiURL
 	cmdurl += fmt.Sprintf("s/%s/%s", site.Name, cmd)
 
 	data, err := json.Marshal(jsonData)
