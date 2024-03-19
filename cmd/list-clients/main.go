@@ -16,7 +16,7 @@ import (
 	"text/tabwriter"
 	"time"
 
-	"github.com/dim13/unifi"
+	"github.com/paprika253/unifi"
 )
 
 var (

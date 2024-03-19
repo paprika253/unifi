@@ -13,7 +13,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/dim13/unifi"
+	"github.com/paprika253/unifi"
 )
 
 type roaming struct {
