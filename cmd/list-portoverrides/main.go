@@ -14,7 +14,7 @@ import (
 	"strconv"
 	"text/tabwriter"
 
-	"github.com/dim13/unifi"
+	"github.com/paprika253/unifi"
 )
 
 var (
