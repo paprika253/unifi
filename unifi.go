@@ -191,8 +191,17 @@ func (u *Unifi) maccmd(mgr string, args any) error {
 		return err
 	}
 	val := url.Values{"json": {string(param)}}
-	_, err = u.client.PostForm(u.ApiURL+"cmd/"+mgr, val)
-	return err
+	resp, err := u.client.PostForm(u.ApiURL+"cmd/"+mgr, val)
+	if err != nil {
+		return err
+	}
+	defer resp.Body.Close()
+	var res map[string]interface{}
+
+	json.NewDecoder(resp.Body).Decode(&res)
+
+	log.Println(res)
+	return nil
 }
 
 func (u *Unifi) parse(site *Site, cmd string, payload any, v any) error {
